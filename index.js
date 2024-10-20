@@ -13,14 +13,18 @@ app.get('/', (req, res) => {
 });
 
 ///end points
-app.get('/calculate-return', (req, res) => {
+app.get('/calculate-returns', (req, res) => {
   const boughtAt = parseFloat(req.query.boughtAt);
-    const marketPrice = parseFloat(req.query.marketPrice);
-    const quantity = parseInt(req.query.quantity);
-    if (isNaN(boughtAt) || isNaN(marketPrice) || isNaN(quantity)) {
+  const marketPrice = parseFloat(req.query.marketPrice);
+  const quantity = parseInt(req.query.quantity);
+
+
+  if (isNaN(boughtAt) || isNaN(marketPrice) || isNaN(quantity)) {
       return res.status(400).send('Invalid input. Please provide valid numbers for boughtAt, marketPrice, and quantity.');
   }
+
   const returnValue =(marketPrice - boughtAt) * quantity;
+  console.log(returnValue)
 
   res.send(returnValue.toString());
 });
