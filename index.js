@@ -20,7 +20,7 @@ app.get('/calculate-return', (req, res) => {
     if (isNaN(boughtAt) || isNaN(marketPrice) || isNaN(quantity)) {
       return res.status(400).send('Invalid input. Please provide valid numbers for boughtAt, marketPrice, and quantity.');
   }
-  const return=(marketPrice - boughtAt) * quantity;
+  const returnValue =(marketPrice - boughtAt) * quantity;
 
   res.send(returnValue.toString());
 });
